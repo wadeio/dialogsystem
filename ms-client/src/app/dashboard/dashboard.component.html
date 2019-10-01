@@ -1,0 +1,21 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>>
+<body class={{navbarcom.bodyclass}}>
+        <app-navbar #navbarcom></app-navbar>
+        <app-sidebar #sidebarcom></app-sidebar>
+        <app-android *ngIf=sidebarcom.view1></app-android>
+        <app-intents *ngIf=sidebarcom.view2></app-intents>
+        <app-entities *ngIf=sidebarcom.view3></app-entities>
+        <app-settings *ngIf=sidebarcom.view4></app-settings>
+        <app-story  *ngIf=sidebarcom.view5></app-story>
+        <app-train *ngIf=sidebarcom.view6></app-train>
+        <app-dialogtest *ngIf=sidebarcom.view7></app-dialogtest>
+        <app-apiservice *ngIf=sidebarcom.view8></app-apiservice>
+        <app-templates *ngIf=sidebarcom.view9></app-templates>
+        <!--<app-intents *ngIf=#sidebarcom.view2></app-intents>-->
+        
+</body>
+
+

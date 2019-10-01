@@ -1,0 +1,21 @@
+
+        <!-- Sidebar menu-->
+        <div  class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        <aside   class="app-sidebar">
+          <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../../assets/img/onep.jpeg" alt="User Image">
+            <div>
+              <p class="app-sidebar__user-name">第一組</p>
+              <p class="app-sidebar__user-designation">無敵機器人</p>
+            </div>
+          </div>
+          
+          
+          <ul class="app-menu">
+                <li  *ngFor="let obj of sidebarobj">
+                        <a [class]=currentstate (click)="changeview(obj.id)" href="/intents"><i class={{obj.icon}}></i><span class="app-menu__label">{{obj.title}}</span></a>
+                </li>
+          </ul>
+         
+         
+        </aside>
+        

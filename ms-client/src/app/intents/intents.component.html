@@ -1,0 +1,101 @@
+<main class="app-content">
+    <div class="app-title">
+            <div>
+            <h1><i class="fa fa-dashboard"></i> Intents</h1>
+            <p>意圖代表一句話裡想表達動機</p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Intents</a></li>
+            </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+                <div class="tile">
+              <!--
+                    <div class="spinner-box">
+                        <div class="pulse-container">  
+                          <div class="pulse-bubble pulse-bubble-1"></div>
+                          <div class="pulse-bubble pulse-bubble-2"></div>
+                          <div class="pulse-bubble pulse-bubble-3"></div>
+                        </div>
+                      </div>-->
+                      
+                        <h3 class="tile-title" >標註意圖</h3>
+                        <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#TrainDataModal">新增</button>
+                        <div class="row">
+                          <!--
+                            <div class="spinner-box">
+                                <div class="pulse-container">  
+                                  <div class="pulse-bubble pulse-bubble-1"></div>
+                                  <div class="pulse-bubble pulse-bubble-2"></div>
+                                  <div class="pulse-bubble pulse-bubble-3"></div>
+                                </div>
+                            </div>-->
+                                <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>
+                                <!--<div class="col-md-3"><div class="p-3 border bg-light text-center">意圖</div></div>
+                                <div class="col-md-2"><div class="p-3 border bg-light text-center">控制</div></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-danger mt-2">刪除</button></div>-->
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="spinner-box" *ngIf="waiting">
+                                <div class="pulse-container">  
+                                  <div class="pulse-bubble pulse-bubble-1"></div>
+                                  <div class="pulse-bubble pulse-bubble-2"></div>
+                                  <div class="pulse-bubble pulse-bubble-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngFor="let objintent of intents"> 
+                        <!--<canvas class="embed-responsive-item" id="lineChartDemo"></canvas>-->
+                              
+                                <div class="col-md-7">
+                                  <a (click)="edit(objintent)">
+                                    <div class="p-3 border bg-light text-center" *ngIf="objintent!==editiIntent">{{objintent.text}}</div>
+                                    <!--<div class="p-3 border"><input *ngIf="objintent===editiIntent" [(ngModel)]="objintent.text"(blur)="update()" (keyup.enter)="update()"></div>-->
+                                  </a>
+                                </div>
+                               
+                                <div class="col-md-3"><div class="p-3 border bg-light text-center">{{objintent.intent}}</div></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-danger mt-2"  title="刪除意圖句子" (click)="delete(objintent)">刪除</button></div>
+                        </div>
+                </div>
+        </div>
+   </div>
+ </main>
+
+<!-- *************************************  Train Data Modal  ***************************************-->
+ <div class="modal fade" id="TrainDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">新增訓練資料</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="intent-name" class="col-form-label">意圖:</label>
+                          <input #newintentname type="text" class="form-control" id="intent-name">
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">文字:</label>
+                          <pre>
+                          <input #traintext class="form-control" id="message-text">
+                          </pre>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary" (click)="add(newintentname.value,traintext.value);">儲存</button>
+                    </div>
+                  </div>
+                </div>
+ </div>

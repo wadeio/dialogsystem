@@ -1,0 +1,53 @@
+
+<main class="app-content">
+        <div class="app-title">
+                <div>
+                <h1><i class="fa fa-dashboard"></i> story</h1>
+                <p>定義對話的狀態流程</p>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item"><a href="#">story</a></li>
+                </ul>
+        </div>
+
+
+       <!--https://botbonnie.com/
+        https://medium.com/botbonnie/%E9%82%A6%E5%A6%AE%E6%95%99%E5%AD%B8%E6%89%8B%E5%86%8A-4a5e2715ee54
+        可參考設計型式
+-->
+
+         <div class="row">
+                <div class="col-md-4">
+                        <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
+                                <h3 class="tile-title">故事</h3>
+                                <div class="row" *ngFor="let story of storys">             
+                                    <div  (click)="edit(story)"><p class="text-info" style="display:'inline-block' font-weight='400' letter-spacing='0' font-size='100px';">{{story.name}}</p></div>
+                                 </div>
+                                             
+                        </div>
+                </div>
+
+                <div class="col-md-4">
+                        <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
+                                <h3 class="tile-title">組織故事{{editiStory.name}}</h3>
+                                <div class="row">
+                                        <div contenteditable style="height:530px;"><p>{{editiStory.story}}</p></div>
+                                                               <!-- <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>    -->
+                                </div>
+                                                     
+                        </div>
+                 </div>
+
+                 <div class="col-md-4">
+                                <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;"> 
+                                        <h3 class="tile-title">流程</h3>
+                                        <div class="row">
+                                                
+                                                                       <!-- <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>    -->
+                                        </div>
+                                                             
+                                </div>
+                         </div>
+         </div>
+     </main>

@@ -1,0 +1,50 @@
+
+
+<main class="app-content">
+        <div class="app-title">
+                <div>
+                <h1><i class="fa fa-dashboard"></i> dialogtest</h1>
+                <p>測試你的機器人是否能正常的對話</p>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item"><a href="#">dialogtest</a></li>
+                </ul>
+        </div>
+
+        <div class="row" style="height:400px;">
+                <div class="col-md-12">
+                        <div class="tile" style="height:370px; overflow-x:hidden;overflow-y:auto;">
+                                <h3 class="tile-title">對話測試</h3>
+                                <div class="row" *ngFor="let sessionobj of messagelist">
+                                     <div class="col-md-10" *ngIf="sessionobj.id==1"><div class="ml-5 bg-white text-right">{{sessionobj.user}}:{{sessionobj.text}}</div></div>      
+                                     <div class="col-md-10" *ngIf="sessionobj.id==0"><div class="ml-0 bg-white text-left">{{sessionobj.user}}:{{sessionobj.text}}</div></div>      
+                                </div>
+                                
+                               <!-- <div class="row">
+                                       <div class="col-md-10"><div class="ml-0 bg-white text-left">我是機器人</div></div>
+                                </div>
+                                <div class="row">
+                                                <div class="col-md-10"><div class="ml-5 bg-white text-right">妳好</div></div>
+                                </div>-->
+                             
+                               
+                        </div>
+                </div>
+           </div>
+
+           <div class="row">
+                <div class="col-md-12">
+                        <div class="tile">
+                                <h3 class="tile-title">請輸入訊息</h3>
+                                <div class="row">
+                                        <div class="col-md-10"><input #message type="text" class="form-control" placeholder="請輸入對話訊息"></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-danger mt-0" (click)="resetdialog()">重置</button></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-info mt-0" (click)="sendmessage(message.value)">傳送</button></div>
+                                </div>
+                              
+                        </div>
+                </div>
+           </div>
+
+     </main>

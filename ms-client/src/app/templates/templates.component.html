@@ -1,0 +1,84 @@
+
+
+<main class="app-content">
+        <div class="app-title">
+                <div>
+                <h1><i class="fa fa-dashboard"></i>templates</h1>
+                <p>提供定義回話的範本語句</p>
+                </div>
+                <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item"><a href="#">templates</a></li>
+                </ul>
+        </div>
+
+        <div class="row">
+                <div class="col-md-12">
+                        <div class="tile">
+                                <h3 class="tile-title">定義回應範本</h3>
+                                
+                                <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#TrainDataModal">新增</button>
+                                <div class="row">
+                                        <div class="col-md-12"><div class="p-3 border bg-light text-center">回應範本</div></div>
+                                        <!--<div class="col-md-3"><div class="p-3 border bg-light text-center">意圖</div></div>
+                                        <div class="col-md-2"><div class="p-3 border bg-light text-center">控制</div></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-danger mt-2">刪除</button></div>-->
+                                </div>
+
+                                <div class="row justify-content-center">
+                                        <div class="spinner-box" *ngIf="waiting">
+                                            <div class="pulse-container">  
+                                                <div class="pulse-bubble pulse-bubble-1"></div>
+                                                <div class="pulse-bubble pulse-bubble-2"></div>
+                                                <div class="pulse-bubble pulse-bubble-3"></div>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="row" *ngFor="let objtemp of templatesAll"> 
+                                        <div class="col-md-7"><div class="p-3 border bg-light text-center">{{objtemp.text}}</div></div>
+                                        <div class="col-md-3"><div class="p-3 border bg-light text-center">{{objtemp.template}}</div></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-danger mt-2"  title="刪除意圖句子" (click)="delete(objtemp)">刪除</button></div>
+                                </div>
+                        </div>
+                </div>
+           </div>
+
+
+</main>
+
+
+
+<!-- *************************************  Template Data Modal  ***************************************-->
+<div class="modal fade" id="TrainDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">新增回應資料</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="intent-name" class="col-form-label">回應範本:</label>
+                          <input #utter type="text" class="form-control" id="intent-name">
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">內容:</label>
+                          <pre>
+                          <input #message class="form-control" id="message-text">
+                          </pre>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary" (click)="add(utter.value,message.value);">儲存</button>
+                    </div>
+                  </div>
+                </div>
+ </div>
