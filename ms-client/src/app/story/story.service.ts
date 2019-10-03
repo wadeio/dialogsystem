@@ -13,7 +13,7 @@ let httpOptions=null;
   providedIn: 'root'
 })
 export class StoryService {
-  
+  token:string="";
   storydataUrl = 'http://3.14.100.246:5002/api/stories';  // URL to web api
   private handleError: HandleError;
 
@@ -31,8 +31,42 @@ export class StoryService {
       );
   }
 
+  /** GET Domain  from the server **/
+  getDomainData (): Observable<any> {
+    const url =`http://3.14.100.246:5002/api/domain`; // GET api/domain
+    
+    
+    //D5mhVVJ1fUTH
+      return this.http.get(url, { headers: new HttpHeaders({'Content-Type':  'application/json','Authorization': this.token,}),
+      responseType:'text'})
+      .pipe(
+            catchError(this.handleError('getDomainData', ""))
+          );
+        
+  }
+  
+  //http://3.14.100.246:5002/api/stories/4
+  /** GET Update story path to the server **/
+
+  updateStory (id: number, edittext:string): Observable<any> {
+    const url =`${this.storydataUrl}/${id}`;// update api/stories/id
+ 
+    return this.http.put<any>(url, edittext, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateStory', ""))
+      );
+  }
+
+
+
     setToken (data:any): void {    
       httpOptions=data;
       console.log("story載入httpOptions success");
+    }
+
+
+    setTokenValue (data:any): void {    
+      this.token=data;
+      console.log("story載入value success");
     }
 }

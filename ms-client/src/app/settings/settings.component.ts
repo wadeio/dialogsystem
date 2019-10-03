@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from './settings.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-settings',
@@ -8,16 +9,39 @@ import { SettingsService } from './settings.service';
 })
 export class SettingsComponent implements OnInit {
   configdata: any;
+  waiting:Boolean=true;
   constructor(private settingsService: SettingsService) { }
 
   ngOnInit() {
-    this.getConfigData();
-    console.log("測試"+this.configdata);
-    
+    this.setAuth();
+    this.getConfigData(); 
   }
+
 
   getConfigData(): void {
     this.settingsService.getConfigData()
-      .subscribe(i => this.configdata==i);
+      .subscribe({
+            next:i => {this.configdata=i;
+          },error:err=>{
+            alert("系統錯誤");
+          },complete:()=>{
+              this.waiting=false;
+          }
+      });
   }
+  
+
+
+  setAuth():void{
+    let tokendata=localStorage.getItem("access_token");
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': tokendata,
+      })
+    };
+    this.settingsService.setToken(httpOptions);
+    //alert("test"+localStorage.getItem("access_token"));
+  }
+
 }

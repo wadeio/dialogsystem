@@ -17,37 +17,60 @@
         可參考設計型式
 -->
 
-         <div class="row">
-                <div class="col-md-4">
-                        <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
-                                <h3 class="tile-title">故事</h3>
-                                <div class="row" *ngFor="let story of storys">             
-                                    <div  (click)="edit(story)"><p class="text-info" style="display:'inline-block' font-weight='400' letter-spacing='0' font-size='100px';">{{story.name}}</p></div>
-                                 </div>
-                                             
-                        </div>
+
+<div class="row justify-content-center"  *ngIf="waiting; else elseBlock">
+                <div class="spinner-box">
+                    <div class="pulse-container">  
+                      <div class="pulse-bubble pulse-bubble-1"></div>
+                      <div class="pulse-bubble pulse-bubble-2"></div>
+                      <div class="pulse-bubble pulse-bubble-3"></div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="col-md-4">
-                        <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
-                                <h3 class="tile-title">組織故事{{editiStory.name}}</h3>
-                                <div class="row">
-                                        <div contenteditable style="height:530px;"><p>{{editiStory.story}}</p></div>
-                                                               <!-- <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>    -->
-                                </div>
-                                                     
-                        </div>
-                 </div>
 
-                 <div class="col-md-4">
-                                <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;"> 
-                                        <h3 class="tile-title">流程</h3>
-                                        <div class="row">
-                                                
-                                                                       <!-- <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>    -->
+
+            <ng-template #elseBlock>
+                <div class="row">
+                        <div class="col-md-4">
+                                <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
+                                        <h3 class="tile-title">故事</h3>
+                                        <div class="row justify-content-center" *ngFor="let story of storys">             
+                                                <div  (click)="edit(story)" class="col-md-12 bg-light text-center text-dark"><p class="" style="display:'inline-block' font-weight='400' letter-spacing='0' font-size='100px';">{{story.name}}</p></div>
                                         </div>
-                                                             
+                                                
                                 </div>
-                         </div>
-         </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-md-4">
+                                <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;">
+                                        <h3 class="tile-title">組織故事線{{editiStory.name}}</h3>
+                                        <div class="row">
+                                                       <!-- <ckeditor [(data)]="editorData"></ckeditor>-->
+                                                       
+                                                        <textarea #editordata style="height:350px; width:350px;">{{editorData}}</textarea>
+                                                        <div class="col-md-8"></div>
+                                                        <div class="col-md-4"><button type="button" class="btn btn-info mt-3" (click)="updatestory(editordata.value)">儲存</button></div>
+                                        </div>
+                                                        
+                                </div>
+                        </div>
+
+                        <div class="col-md-4">
+                                        <div class="tile" style="height:530px; overflow-x:hidden;overflow-y:auto;"> 
+                                                <h3 class="tile-title">控制項</h3>
+                                                <div class="row">
+                                                                <!--<pre><code [(data)]="domain"></code></pre>-->
+                                                                <code><pre  class="text-info">{{domain}}</pre></code>
+                                                     <!--<ckeditor [(data)]="domain"></ckeditor>-->
+                                                    
+                                                                      
+                                                </div>
+                                                                
+                                        </div>
+                                </div>
+                </div>
+        </ng-template>
      </main>

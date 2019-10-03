@@ -10,4 +10,27 @@
                 <li class="breadcrumb-item"><a href="#">settings</a></li>
                 </ul>
         </div>
+
+        <div class="row">
+                        <div class="col-md-12">
+                                <div class="tile">
+                                        <h3 class="tile-title"></h3>
+                                        <div class="row justify-content-center">
+                                                        <div class="spinner-box" *ngIf="waiting">
+                                                            <div class="pulse-container">  
+                                                              <div class="pulse-bubble pulse-bubble-1"></div>
+                                                              <div class="pulse-bubble pulse-bubble-2"></div>
+                                                              <div class="pulse-bubble pulse-bubble-3"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                        <div class="row">
+                                           <code *ngIf="configdata"><pre class="text-info ml-5">{{configdata.config}}</pre></code>
+                                        </div>
+                                      
+                                </div>
+                        </div>
+                   </div>
+
      </main>

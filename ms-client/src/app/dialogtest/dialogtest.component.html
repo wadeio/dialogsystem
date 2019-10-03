@@ -14,11 +14,16 @@
 
         <div class="row" style="height:400px;">
                 <div class="col-md-12">
-                        <div class="tile" style="height:370px; overflow-x:hidden;overflow-y:auto;">
+                        <div class="tile" style="height:370px; overflow-x:hidden;overflow-y:scroll;">
                                 <h3 class="tile-title">對話測試</h3>
                                 <div class="row" *ngFor="let sessionobj of messagelist">
                                      <div class="col-md-10" *ngIf="sessionobj.id==1"><div class="ml-5 bg-white text-right">{{sessionobj.user}}:{{sessionobj.text}}</div></div>      
-                                     <div class="col-md-10" *ngIf="sessionobj.id==0"><div class="ml-0 bg-white text-left">{{sessionobj.user}}:{{sessionobj.text}}</div></div>      
+                                     <div class="col-md-10" *ngIf="sessionobj.id==0"><div class="ml-0 bg-white text-left"><img _ngcontent-mbp-c10="" alt="User Image" class="app-sidebar__user-avatar" src="../../assets/img/onep.jpeg" style="
+                                        width: 50px;
+                                        border: 1px solid #ddd;
+                                        padding: 2px;
+                                        margin-right: 5px;
+                                    ">{{sessionobj.user}}:{{sessionobj.text}}</div></div>      
                                 </div>
                                 
                                <!-- <div class="row">

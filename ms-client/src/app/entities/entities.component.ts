@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entities.component.css']
 })
 export class EntitiesComponent implements OnInit {
-
+  waiting:Boolean=true;
   constructor() { }
 
   ngOnInit() {

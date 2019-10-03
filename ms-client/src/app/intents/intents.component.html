@@ -13,33 +13,20 @@
     <div class="row">
         <div class="col-md-12">
                 <div class="tile">
-              <!--
-                    <div class="spinner-box">
-                        <div class="pulse-container">  
-                          <div class="pulse-bubble pulse-bubble-1"></div>
-                          <div class="pulse-bubble pulse-bubble-2"></div>
-                          <div class="pulse-bubble pulse-bubble-3"></div>
-                        </div>
-                      </div>-->
-                      
+              
                         <h3 class="tile-title" >標註意圖</h3>
-                        <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#TrainDataModal">新增</button>
+                        
                         <div class="row">
-                          <!--
-                            <div class="spinner-box">
-                                <div class="pulse-container">  
-                                  <div class="pulse-bubble pulse-bubble-1"></div>
-                                  <div class="pulse-bubble pulse-bubble-2"></div>
-                                  <div class="pulse-bubble pulse-bubble-3"></div>
+                         
+                                <div class="col-md-10">
+                                  <p class="lead p-3 text-center">句子意圖</p>
                                 </div>
-                            </div>-->
-                                <div class="col-md-12"><div class="p-3 border bg-light text-center">句子意圖</div></div>
-                                <!--<div class="col-md-3"><div class="p-3 border bg-light text-center">意圖</div></div>
-                                <div class="col-md-2"><div class="p-3 border bg-light text-center">控制</div></div>
-                                <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
-                                <div class="col-md-1"><button type="button" class="btn btn-danger mt-2">刪除</button></div>-->
-                        </div>
+                                <div class="col-md-2">
+                                  <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#TrainDataModal">新增</button>
+                                </div>
 
+                        </div>
+                        <hr>
                         <div class="row justify-content-center">
                             <div class="spinner-box" *ngIf="waiting">
                                 <div class="pulse-container">  
@@ -53,14 +40,14 @@
                         <!--<canvas class="embed-responsive-item" id="lineChartDemo"></canvas>-->
                               
                                 <div class="col-md-7">
-                                  <a (click)="edit(objintent)">
-                                    <div class="p-3 border bg-light text-center" *ngIf="objintent!==editiIntent">{{objintent.text}}</div>
+                                  <!--<a (click)="edit(objintent)">-->
+                                    <div class="p-3 border bg-light text-center" >{{objintent.text}}</div>
                                     <!--<div class="p-3 border"><input *ngIf="objintent===editiIntent" [(ngModel)]="objintent.text"(blur)="update()" (keyup.enter)="update()"></div>-->
-                                  </a>
+                                 <!--</a>--> 
                                 </div>
                                
                                 <div class="col-md-3"><div class="p-3 border bg-light text-center">{{objintent.intent}}</div></div>
-                                <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-info mt-2" data-toggle="modal" data-target="#EditorDataModal" (click)="edit(objintent)">編輯</button></div>
                                 <div class="col-md-1"><button type="button" class="btn btn-danger mt-2"  title="刪除意圖句子" (click)="delete(objintent)">刪除</button></div>
                         </div>
                 </div>
@@ -99,3 +86,36 @@
                   </div>
                 </div>
  </div>
+
+
+ <!-- *************************************  Editor Data Modal  ***************************************-->
+ <div class="modal fade" id="EditorDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">編輯訓練資料</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="editintent-name" class="col-form-label">意圖:</label>
+              <input type="text" class="form-control" id="editintent-name"  *ngIf="editiIntent">
+            </div>
+            <div class="form-group">
+              <label for="editmessage-text" class="col-form-label">文字:</label>
+              <pre>
+              <input class="form-control" id="editmessage-text"  *ngIf="editiIntent" value={{editiIntent.text}}>
+              </pre>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" (click)="update(editintentname.value,edittraintext.value);">儲存</button>
+        </div>
+      </div>
+    </div>
+</div>

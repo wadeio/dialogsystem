@@ -16,7 +16,7 @@ import { DialogtestComponent } from './dialogtest/dialogtest.component';
 import { ApiserviceComponent } from './apiservice/apiservice.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { TemplatesComponent } from './templates/templates.component';
-
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { TemplatesComponent } from './templates/templates.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
