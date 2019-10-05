@@ -28,12 +28,34 @@
                                     
                         </div>
 
+                        
+
                         <div class="tile">
+
+                                     
                                         <div class="row">
                                                 <div class="col-md-4"><h5>模型名稱</h5></div>
                                                 <div class="col-md-4"><h5>創造時間</h5></div>
                                                 <div class="col-md-4"><h5>狀態</h5></div>
+                                                <br>
                                          </div>   
+
+                                         <div class="row justify-content-center">
+                                                        <div class="spinner-box" *ngIf="waiting">
+                                                            <div class="pulse-container">  
+                                                                <div class="pulse-bubble pulse-bubble-1"></div>
+                                                                <div class="pulse-bubble pulse-bubble-2"></div>
+                                                                <div class="pulse-bubble pulse-bubble-3"></div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                
+
+                                         <div class="row" *ngFor="let modeldata of modelsAll">
+                                                <div class="col-md-4"><h6>{{modeldata.model}}</h6></div>
+                                                <div class="col-md-4"><h6>{{modeldata.trained_at_}}</h6></div>
+                                                <div class="col-md-4"><h6>{{modeldata.tags}}</h6></div>
+                                        </div>   
 
 
                         </div>

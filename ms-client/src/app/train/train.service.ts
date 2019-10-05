@@ -37,6 +37,24 @@ traindata(): Observable<any> {
     );
 }
 
+ /** GET All models from the server */
+ getModels (): Observable<any> {
+  const url =`http://3.14.100.246:5002/api/projects/default/models?limit=18&offset=0`; // GET api/models
+  return this.http.get<any[]>(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('getModels', ""))
+    );
+}
+
+
+ /** GET cureent models from the server */
+ getcureentModel (): Observable<any> {
+  const url =`http://3.14.100.246:5002/api/projects/default/models?limit=1&offset=0`; // GET api/models
+  return this.http.get<any[]>(url,httpOptions)
+    .pipe(
+      catchError(this.handleError('gegetcureentModeltModels', ""))
+    );
+}
 setToken (data:any): void {    
   httpOptions=data;
   console.log("train載入httpOptions success");

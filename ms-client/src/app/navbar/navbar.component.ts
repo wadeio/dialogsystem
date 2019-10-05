@@ -14,6 +14,14 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  profile():void{
+    event.preventDefault();
+    
+  }
+  setting():void{
+    event.preventDefault();
+  }
+
   switchsidebar(){
     event.preventDefault();
     if(this.bodyclass=="app sidebar-mini rtl"){
