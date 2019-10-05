@@ -67,7 +67,7 @@ addtrainintent (newtrainintent: any): Observable<any> {
 updatetrainintent (intents: Intents): Observable<any> {
   let id=intents.id;
   const url = `${this.intensdataUrl}/${id}`;
-  return this.http.put<Intents>(this.intensdataUrl, intents, httpOptions)
+  return this.http.put<Intents>(url, intents, httpOptions)
     .pipe(
       catchError(this.handleError('updatetrainintent', intents))
     );

@@ -49,7 +49,15 @@ export class TemplatesService {
     }
   
 
-
+/* PUT: update the template on the server. Returns the updated template upon success. */
+updatetemplate(templatedata: any): Observable<any> {
+  let id=templatedata.id;
+  const url = `${this.templatesdataUrl}/${id}`;
+  return this.http.put<any>(url, templatedata, httpOptions)
+    .pipe(
+      catchError(this.handleError('updatetemplate', templatedata))
+    );
+}
 
   
 

@@ -102,19 +102,19 @@
           <form>
             <div class="form-group">
               <label for="editintent-name" class="col-form-label">意圖:</label>
-              <input type="text" class="form-control" id="editintent-name"  *ngIf="editiIntent">
+              <input type="text" class="form-control" id="editintent-name"  *ngIf="editiIntent" value={{editiIntent.intent}} #editorintent (keyup)="onKeyintent(editorintent.value)"  />
             </div>
             <div class="form-group">
               <label for="editmessage-text" class="col-form-label">文字:</label>
               <pre>
-              <input class="form-control" id="editmessage-text"  *ngIf="editiIntent" value={{editiIntent.text}}>
+              <input class="form-control" id="editmessage-text"  *ngIf="editiIntent" value={{editiIntent.text}} #editortext (keyup)="onKeytext(editortext.value)" />
               </pre>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" (click)="update(editintentname.value,edittraintext.value);">儲存</button>
+          <button type="button" class="btn btn-primary" (click)="update();">儲存</button>
         </div>
       </div>
     </div>

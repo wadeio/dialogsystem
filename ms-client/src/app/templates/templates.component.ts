@@ -10,6 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class TemplatesComponent implements OnInit {
   templatesAll: any[];
   waiting:Boolean=true;
+  editiTemplate: any; // the template currently being edited
   constructor(private templatesService: TemplatesService) { }
 
   ngOnInit() {
@@ -28,6 +29,18 @@ export class TemplatesComponent implements OnInit {
       });
   }
 
+  edit(objtemp:any):void{
+    this.editiTemplate=objtemp;
+    //alert(this.editiTemplate.text+"\n"+this.editiTemplate.template);
+  }
+
+  onKeytemplate(msr:string):void{
+    this.editiTemplate.template=msr;
+  }
+
+  onKeytext(msr:string):void{
+    this.editiTemplate.text=msr;
+  }
 
   add(uttertext: string,message:string): void {
     uttertext = uttertext.trim();
@@ -53,6 +66,25 @@ export class TemplatesComponent implements OnInit {
     // oops ... subscribe() is missing so nothing happens
     this.heroesService.deleteHero(hero.id);
     */
+  }
+
+  update() {
+    if (this.editiTemplate) {
+
+      var editortemp={
+          text:this.editiTemplate.text,
+          template:this.editiTemplate.template,
+          id:this.editiTemplate.id};
+
+      this.templatesService.updatetemplate(editortemp)
+        .subscribe(i => {
+          // replace the intent in the intents list with update from server
+          const ix = i ? this.templatesAll.findIndex(h => h.id === i.id) : -1;
+          if (ix > -1) { this.templatesAll[ix] = i; }
+        });
+        //reset data
+       // this.editiIntent = undefined;
+    }
   }
 
 

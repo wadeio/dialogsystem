@@ -22,6 +22,15 @@ export class IntentsComponent implements OnInit {
     this.getIntentlist(); 
   }
 
+  onKeytext(msr:string):void{
+    this.editiIntent.text=msr
+  }
+
+  onKeyintent(msr:string):void{
+    this.editiIntent.intent=msr
+  }
+
+ 
   getIntentlist(): void {
     this.intentsService.getIntentsData()
       .subscribe({
@@ -69,21 +78,9 @@ export class IntentsComponent implements OnInit {
     this.editiIntent = intents;
   }
 
-  test():void{
-    alert(this.editiIntent.intent)
-  }
-
-  test1():void{
-    alert(this.editiIntent.text)
-  }
-
-  update(name:string,text:string) {
+  update() {
     if (this.editiIntent) {
 
-      //this.editiIntent.intent=name;
-      //this.editiIntent.text=text;
-      alert(text);
-      /*
       this.intentsService.updatetrainintent(this.editiIntent)
         .subscribe(i => {
           // replace the intent in the intents list with update from server
@@ -91,7 +88,7 @@ export class IntentsComponent implements OnInit {
           if (ix > -1) { this.intents[ix] = i; }
         });
         //reset data
-        this.editiIntent = undefined;*/
+       // this.editiIntent = undefined;
     }
   }
 

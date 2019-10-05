@@ -40,7 +40,7 @@
                                 <div class="row" *ngFor="let objtemp of templatesAll"> 
                                         <div class="col-md-7"><div class="p-3 border bg-light text-center">{{objtemp.text}}</div></div>
                                         <div class="col-md-3"><div class="p-3 border bg-light text-center">{{objtemp.template}}</div></div>
-                                        <div class="col-md-1"><button type="button" class="btn btn-info mt-2">編輯</button></div>
+                                        <div class="col-md-1"><button type="button" class="btn btn-info mt-2" data-toggle="modal" data-target="#EditorDataModal" (click)="edit(objtemp)">編輯</button></div>
                                         <div class="col-md-1"><button type="button" class="btn btn-danger mt-2"  title="刪除意圖句子" (click)="delete(objtemp)">刪除</button></div>
                                 </div>
                         </div>
@@ -65,8 +65,8 @@
                     <div class="modal-body">
                       <form>
                         <div class="form-group">
-                          <label for="intent-name" class="col-form-label">回應範本:</label>
-                          <input #utter type="text" class="form-control" id="intent-name">
+                          <label for="template-name" class="col-form-label">回應範本:</label>
+                          <input #utter type="text" class="form-control" id="template-name">
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">內容:</label>
@@ -83,3 +83,37 @@
                   </div>
                 </div>
  </div>
+
+
+
+ <!-- *************************************  Editor Data Modal  ***************************************-->
+ <div class="modal fade" id="EditorDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">編輯訓練資料</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="edittemplate-name" class="col-form-label">回應範本:</label>
+            <input type="text" class="form-control" id="edittemplate-name"  *ngIf="editiTemplate" value={{editiTemplate.template}} #editortemplate (keyup)="onKeytemplate(editortemplate.value)"  />
+          </div>
+          <div class="form-group">
+            <label for="editmessage-text" class="col-form-label">內容:</label>
+            <pre>
+            <input class="form-control" id="editmessage-text"  *ngIf="editiTemplate" value={{editiTemplate.text}} #editortext (keyup)="onKeytext(editortext.value)" />
+            </pre>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" (click)="update();">儲存</button>
+      </div>
+    </div>
+  </div>
+</div>
